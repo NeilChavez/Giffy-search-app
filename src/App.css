@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #121212;
+  background-color: #232222;
   color: #fff;
 }
 
@@ -11,6 +11,17 @@
   margin-left: auto;
   margin-right: auto;
 }
+.App-main{
+  display: flex
+}
+
+.App-main .ListOfGifs{
+  width: 60%
+}
+.App-main .TrendingSearchTerms{
+  width: 35%
+}
+
 .Link-home {
   width: auto;
   height: 100%;
@@ -24,6 +35,24 @@
   max-height: 100%;
   display: block;
 }
+
+.ListOfGifs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0.5rem;
+}
+.ListOfGifs > * {
+  border: thick solid transparent;
+}
+
+.ListOfGifs > :nth-child(even):hover {
+  border: thick solid #963ac5;
+}
+
+.ListOfGifs > :nth-child(odd):hover {
+  border: thick solid #72f69a;
+}
+
 
 @media (min-width: 576px) {
   .App-nav {
