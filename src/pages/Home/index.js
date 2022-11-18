@@ -4,6 +4,7 @@ import Spinner from "../../components/Spinner";
 import ListOfGifs from "../../components/ListOfGifs";
 import { useGifs } from "../../hooks/useGifs";
 import TrendingSearchTerms from "../../components/TrendingSearchTerms"
+import "./Home.css"
 
 export default function Home() {
   const [keyword, setKeyword] = useState("");

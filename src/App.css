@@ -11,16 +11,6 @@
   margin-left: auto;
   margin-right: auto;
 }
-.App-main{
-  display: flex
-}
-
-.App-main .ListOfGifs{
-  width: 60%
-}
-.App-main .TrendingSearchTerms{
-  width: 35%
-}
 
 .Link-home {
   width: auto;

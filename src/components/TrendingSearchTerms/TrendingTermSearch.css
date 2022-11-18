@@ -1,0 +1,34 @@
+.TrendingTermSearch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+.Term {
+  border: thick solid transparent;
+}
+.Term a{
+    padding: 0.3rem 0.5rem
+}
+.Term:nth-child(even) a {
+  color: #963ac5;
+}
+.Term:nth-child(odd) a {
+  color: #fff;
+}
+.TrendingTermSearch .Term:nth-child(even) {
+  background-color: #72f69a;
+  border: thick solid #72f69a;
+}
+.TrendingTermSearch .Term:nth-child(odd) {
+  background-color: #963ac5;
+  border: thick solid #963ac5;
+}
+
+.TrendingTermSearch > :nth-child(even):hover {
+  border: thick solid #963ac5;
+}
+
+.TrendingTermSearch > :nth-child(odd):hover {
+  border: thick solid #72f69a;
+}

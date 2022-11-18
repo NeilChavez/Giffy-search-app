@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTrendingTermSearch } from "../../services/getTrendingTermSearch";
-import Category from "../Category";
+import Term from "../Term";
+import "./TrendingTermSearch.css"
 
 export default function TrendingSearchTerms() {
   const [trendings, setTrendings] = useState([]);
@@ -11,10 +12,9 @@ export default function TrendingSearchTerms() {
     });
   }, []);
   return (
-    <div>
-      {console.log(trendings)}
+    <div className="TrendingTermSearch">
       {trendings.map((trending) => (
-        <Category key={trending} title={trending} />
+        <Term key={trending} title={trending} />
       ))}
     </div>
   );
