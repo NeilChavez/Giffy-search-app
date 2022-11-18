@@ -3,6 +3,8 @@
   flex-wrap: wrap;
   gap: 1rem;
   padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
 }
 .Term {
   border: thick solid transparent;

@@ -37,7 +37,7 @@ export default function Home() {
         <section className="ListOfGifs">
           {loading ? <Spinner /> : <ListOfGifs gifs={gifs} />}
         </section>
-        <section className="TrendingSearchTerms">
+        <section className="TrendingSearchTerms-section">
           <TrendingSearchTerms/>
         </section>
       </div>

@@ -1,14 +1,17 @@
 .App-main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: start;
 }
 
 .App-main .ListOfGifs {
   width: 100%;
 }
-.App-main .TrendingSearchTerms {
+.App-main .TrendingSearchTerms-section {
   width: 100%;
 }
+
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
@@ -18,7 +21,8 @@
   .App-main .ListOfGifs {
     width: 70%;
   }
-  .App-main .TrendingSearchTerms {
+  .App-main .TrendingSearchTerms-section {
     width: 25%;
+    min-height: 100vh;
   }
 }
