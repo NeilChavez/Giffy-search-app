@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getGifs } from "../services/getGifs";
 import { API_KEY, API_URL } from "../settings/settings";
 
-export function useGifs({keyword}) {
+export function useGifs({keyword} = {}) {
   const [loading, setLoading] = useState(false);
   const [gifs, setGifs] = useState([]);
   

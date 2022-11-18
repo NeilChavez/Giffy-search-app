@@ -1,44 +1,23 @@
-import { useState } from "react";
-import Gif from "./components/Gif";
-import { useGifs } from "./hooks/useGifs";
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import SearchPage from "./pages/SearchPage";
 import "./App.css";
+import Details from "./pages/Details";
 
 function App() {
-  const [keyword, setKeyword] = useState("");
-  const [keywordToSearch, setKeyWorkToSearch] = useState("");
-  const { gifs, loading } = useGifs({ keyword: keywordToSearch });
-
-  const handleChange = (e) => {
-    setKeyword(e.target.value);
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (keyword) {
-      alert("send the form");
-      setKeyWorkToSearch(keyword);
-    } else {
-      //TODO getisci l'errore del fomulario
-      alert("you need to fill the form");
-    }
-  };
-
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search a gif..."
-          onChange={handleChange}
-          value={keyword}
-        />
-      </form>
-      {loading ? (
-        <p>LOADING...</p>
-      ) : (
-        gifs.map(({ id, urlGif, title }) => (
-          <Gif key={id} id={id} urlGif={urlGif} title={title} />
-        ))
-      )}
+    <div className="App">
+      <nav>
+        <Link className="Link-home" to="/">
+          <img src="/assets/giffy-logo.png" alt="main logo" />
+        </Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search/:keyword" element={<SearchPage />} />
+        <Route path="/gif/:id" element={<Details/>}/>
+      </Routes>
     </div>
   );
 }
