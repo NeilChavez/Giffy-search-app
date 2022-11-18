@@ -7,9 +7,9 @@ import Details from "./pages/Details";
 function App() {
   return (
     <div className="App">
-      <nav>
+      <nav className="App-nav">
         <Link className="Link-home" to="/">
-          <img src="/assets/giffy-logo.png" alt="main logo" />
+          <img src="/assets/giffy-logo.png" className="Logo-img" alt="main logo" />
         </Link>
       </nav>
 

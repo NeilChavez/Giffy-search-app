@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Gif from "../../components/Gif";
+import Spinner from "../../components/Spinner"
+import ListOfGifs from "../../components/ListOfGifs";
 import { useGifs } from "../../hooks/useGifs";
 
 export default function Home() {
@@ -30,13 +31,9 @@ export default function Home() {
           value={keyword}
         />
       </form>
-      {loading ? (
-        <p>LOADING...</p>
-      ) : (
-        gifs.map(({ id, urlGif, title }) => (
-          <Gif key={id} id={id} urlGif={urlGif} title={title} />
-        ))
-      )}
+      {loading ? <Spinner/>
+        
+       : <ListOfGifs gifs={gifs}/>}
     </div>
   );
 }

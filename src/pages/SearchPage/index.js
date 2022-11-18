@@ -1,12 +1,13 @@
-import {useParams} from "react-router-dom"
-import { useGifs } from "../../hooks/useGifs"
-import Gif from "../../components/Gif"
+import { useParams } from "react-router-dom";
+import { useGifs } from "../../hooks/useGifs";
 
-export default function SearchPage(){
-    const {keyword} = useParams()
-    const {gifs, loading} = useGifs({keyword: keyword})
+import ListOfGifs from "../../components/ListOfGifs";
 
-    return <div> 
-        {gifs.map(({id, urlGif, title}) => <Gif key={id} urlGif={urlGif} title={title}/>)}
-    </div>
+export default function SearchPage() {
+  const { keyword } = useParams();
+  const { gifs, loading } = useGifs({ keyword: keyword });
+
+  return <div>
+    <ListOfGifs gifs={gifs}/>
+  </div>;
 }

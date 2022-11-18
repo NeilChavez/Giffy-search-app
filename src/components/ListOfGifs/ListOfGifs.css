@@ -1,0 +1,16 @@
+.ListOfGifs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0.5rem;
+}
+.ListOfGifs > * {
+  border: thick solid transparent;
+}
+
+.ListOfGifs > :nth-child(even):hover {
+  border: thick solid #963ac5;
+}
+
+.ListOfGifs > :nth-child(odd):hover {
+  border: thick solid #72f69a;
+}

@@ -1,6 +1,38 @@
 .App {
   text-align: center;
   background-color: #121212;
-  color: #fff
+  color: #fff;
 }
 
+.App-nav {
+  padding: 2rem 0;
+  width: 75%;
+  height: 14rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.Link-home {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+}
+.Logo-img {
+  border: thick solid white;
+  width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+@media (min-width: 576px) {
+  .App-nav {
+    width: 65%;
+  }
+}
+
+@media (min-width: 768px) {
+  .App-nav {
+    width: 40%;
+  }
+}
