@@ -1,16 +1,16 @@
 import { useState, createContext } from "react";
 
-const gifContext = createContext();
+const GifsContext = createContext();
 
-function GifContextProvider({ children }) {
+function GifsContextProvider({ children }) {
   const [gifs, setGifs] = useState([]);
 
   return (
-    <gifContext.Provider value={{ gifs, setGifs }}>
+    <GifsContext.Provider value={{ gifs, setGifs }}>
       {children}
-    </gifContext.Provider>
+    </GifsContext.Provider>
   );
 }
 
-export default gifContext;
-export {GifContextProvider };
+export default GifsContext;
+export {GifsContextProvider };

@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import SearchPage from "./pages/SearchPage";
 import "./App.css";
 import Details from "./pages/Details";
-import { GifContextProvider } from "./context/GifsContext";
+import { GifsContextProvider } from "./context/GifsContext";
 
 function App() {
   return (
@@ -17,13 +17,13 @@ function App() {
           />
         </Link>
       </nav>
-      <GifContextProvider>
+      <GifsContextProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search/:keyword" element={<SearchPage />} />
           <Route path="/gif/:id" element={<Details />} />
         </Routes>
-      </GifContextProvider>
+      </GifsContextProvider>
     </div>
   );
 }
