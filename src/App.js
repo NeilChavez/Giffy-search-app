@@ -3,21 +3,27 @@ import Home from "./pages/Home";
 import SearchPage from "./pages/SearchPage";
 import "./App.css";
 import Details from "./pages/Details";
+import { GifContextProvider } from "./context/GifsContext";
 
 function App() {
   return (
     <div className="App">
       <nav className="App-nav">
         <Link className="Link-home" to="/">
-          <img src="/assets/giffy-logo.png" className="Logo-img" alt="main logo" />
+          <img
+            src="/assets/giffy-logo.png"
+            className="Logo-img"
+            alt="main logo"
+          />
         </Link>
       </nav>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/search/:keyword" element={<SearchPage />} />
-        <Route path="/gif/:id" element={<Details/>}/>
-      </Routes>
+      <GifContextProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search/:keyword" element={<SearchPage />} />
+          <Route path="/gif/:id" element={<Details />} />
+        </Routes>
+      </GifContextProvider>
     </div>
   );
 }
