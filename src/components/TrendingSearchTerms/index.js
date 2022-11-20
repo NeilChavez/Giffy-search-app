@@ -6,10 +6,10 @@ import "./TrendingTermSearch.css";
 const TrendingSearchTerms = lazy(() => import("./TrendingSearches"));
 
 export default function LazyTrendingSearchTerms() {
-  const { isNearToScreen, element } = useIsNearToScreen();
+  const { isNearToScreen, fromRef } = useIsNearToScreen();
 
   return (
-    <section className="TrendingSearchTerms-section" ref={element}>
+    <section className="TrendingSearchTerms-section" ref={fromRef}>
       <Suspense fallback={<Spinner/>}>
         {isNearToScreen ? <TrendingSearchTerms /> : <Spinner/>}
       </Suspense>

@@ -5,7 +5,7 @@ import ListOfGifs from "../../components/ListOfGifs";
 import { useGifs } from "../../hooks/useGifs";
 import TrendingSearchTerms from "../../components/TrendingSearchTerms";
 import "./Home.css";
-import { useIsNearToScreen } from "../../hooks/useIsNearToScreen";
+
 
 export default function Home() {
   const [keyword, setKeyword] = useState("");

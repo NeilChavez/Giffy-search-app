@@ -2,8 +2,10 @@ import { useState, useEffect, useContext } from "react";
 import { getGifs } from "../services/getGifs";
 import GifsContext from "../context/GifsContext";
 
-export function useGifs({ keyword, page = 0 } = { keyword: null }) {
+const INITIAL_PAGE = 0;
+export function useGifs({ keyword } = { keyword: null }) {
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(INITIAL_PAGE);
   // const [gifs, setGifs] = useState([]);
   const { gifs, setGifs } = useContext(GifsContext);
 
@@ -19,7 +21,7 @@ export function useGifs({ keyword, page = 0 } = { keyword: null }) {
     });
   }, [keyword, setGifs, keywordToSearch]);
 
-  useEffect(() => {
+  useEffect(() => {console.log(page)
     if (page === 0) return;
     setLoading(true);
     getGifs({ keyword: keywordToSearch, page: page }).then((res) => {
@@ -27,5 +29,5 @@ export function useGifs({ keyword, page = 0 } = { keyword: null }) {
       setLoading(false);
     });
   }, [page, keywordToSearch, setGifs]);
-  return { loading, gifs };
+  return { loading, gifs, setPage};
 }
