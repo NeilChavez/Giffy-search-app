@@ -1,21 +1,15 @@
-import { useEffect, useState } from "react";
-import { getTrendingTermSearch } from "../../services/getTrendingTermSearch";
-import Term from "../Term";
-import "./TrendingTermSearch.css"
+import TrendingSearchTerms from "./TrendingSearches"
+import { useIsNearToScreen } from "../../hooks/useIsNearToScreen";
+import "./TrendingTermSearch.css";
 
-export default function TrendingSearchTerms() {
-  const [trendings, setTrendings] = useState([]);
 
-  useEffect(() => {
-    getTrendingTermSearch().then((res) => {
-      setTrendings((prevTrendings) => [...prevTrendings, ...res]);
-    });
-  }, []);
+
+export default function LazyTrendingSearchTerms() {
+  const { isNearToScreen, element } = useIsNearToScreen();
+
   return (
-    <div className="TrendingTermSearch">
-      {trendings.map((trending) => (
-        <Term key={trending} title={trending} />
-      ))}
-    </div>
+    <section className="TrendingSearchTerms-section" ref={element}>
+      {isNearToScreen ? <TrendingSearchTerms /> : null}
+    </section>
   );
 }
