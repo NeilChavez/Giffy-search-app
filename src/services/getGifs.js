@@ -1,7 +1,9 @@
 import { API_KEY, API_URL } from "../settings/settings";
 
-export function getGifs({ keyword } = {}) {
-  const endpoint = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=25&offset=0&rating=g&lang=en`;
+export function getGifs({ keyword, limit = 10, page = 0 } = {}) {
+  const endpoint = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${
+    limit * page
+  }&rating=g&lang=en`;
 
   return fetch(endpoint)
     .then((res) => (res.ok ? res.json() : Promise.reject(res)))

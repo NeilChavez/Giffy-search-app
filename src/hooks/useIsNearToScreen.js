@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-export function useIsNearToScreen({ distance = "100px" } = {}) {
+export function useIsNearToScreen({ distance = "100px", once = true } = {}) {
   const [isNearToScreen, setIsNearToScreeen] = useState(false);
 
   const element = useRef();
@@ -15,10 +15,12 @@ export function useIsNearToScreen({ distance = "100px" } = {}) {
 
       if (element.isIntersecting) {
         setIsNearToScreeen(true);
-        observer.disconnect();
+       once && observer.disconnect();
+      }else{
+        setIsNearToScreeen(false);
       }
     };
-    // support for a browser that doesn't the Intersection Observer API
+    // for a browser that doesn't support the Intersection Observer API
     Promise.resolve(
       typeof IntersectionObserver !== "undefined"
         ? IntersectionObserver
