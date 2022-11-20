@@ -21,7 +21,7 @@ export function useGifs({ keyword } = { keyword: null }) {
     });
   }, [keyword, setGifs, keywordToSearch]);
 
-  useEffect(() => {console.log(page)
+  useEffect(() => {
     if (page === 0) return;
     setLoading(true);
     getGifs({ keyword: keywordToSearch, page: page }).then((res) => {

@@ -10,12 +10,16 @@ export default function SearchPage() {
   const { keyword } = useParams();
   const { gifs, loading, setPage } = useGifs({ keyword: keyword });
   const externalRef = useRef();
-  const { isNearToScreen } = useIsNearToScreen({ once: false, externalRef: loading ? null : externalRef });
+  const { isNearToScreen } = useIsNearToScreen({
+    once: false,
+    externalRef: loading ? null : externalRef,
+  });
 
   useEffect(() => {
     if (isNearToScreen) setPage((prevPage) => prevPage + 1);
+    //
   }, [isNearToScreen, setPage]);
-
+  //isNearToScreen, setPage]
   return (
     <>
       {loading ? (
