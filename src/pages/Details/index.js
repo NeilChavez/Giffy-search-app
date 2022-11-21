@@ -5,10 +5,11 @@ import { useSingleGif } from "../../hooks/useSingleGif";
 
 export default function Details() {
   const { id } = useParams();
-  const { gif } = useSingleGif({ id });
+  const { gif, isError, isLoading } = useSingleGif({ id });
 
-  if (!gif) return <Spinner />;
-
+  if(isError) return <div>It happened an Erro :( </div>
+  if (isLoading) return <Spinner />;
+  if(!gif) return null;
   const { id: identification, title, urlGif } = gif;
 
   return (
