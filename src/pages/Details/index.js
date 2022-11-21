@@ -1,16 +1,15 @@
 import { useParams } from "react-router-dom";
 import Gif from "../../components/Gif";
-import useGlobalGifs from "../../hooks/useGlobalGifs";
-import { getGifById } from "../../services/getGifById";
+import Spinner from "../../components/Spinner";
+import { useSingleGif } from "../../hooks/useSingleGif";
 
 export default function Details() {
   const { id } = useParams();
-  const gifs = useGlobalGifs();
-  const gifToRender = getGifById(gifs, id);
+  const { gif } = useSingleGif({ id });
 
-  if (!gifToRender) return null;
+  if (!gif) return <Spinner />;
 
-  const { id: identification, title, urlGif } = gifToRender;
+  const { id: identification, title, urlGif } = gif;
 
   return (
     <div>

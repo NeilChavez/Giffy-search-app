@@ -11,7 +11,6 @@ function SearchForm({ handleSubmit }) {
   };
   return (
     <form onSubmit={onSubmit}>
-      {console.log("form se renderiza")}
       <input
         type="text"
         placeholder="Search a gif..."
