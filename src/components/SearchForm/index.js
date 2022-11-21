@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 
-export default function SearchForm({ handleSubmit }) {
+function SearchForm({ handleSubmit }) {
   const [keyword, setKeyword] = useState("");
   const handleChange = (e) => {
     setKeyword(e.target.value);
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    handleSubmit({keyword});
+    handleSubmit({ keyword });
   };
   return (
     <form onSubmit={onSubmit}>
+      {console.log("form se renderiza")}
       <input
         type="text"
         placeholder="Search a gif..."
@@ -20,3 +21,6 @@ export default function SearchForm({ handleSubmit }) {
     </form>
   );
 }
+const SearchFormMemo = memo(SearchForm);
+
+export default SearchFormMemo;

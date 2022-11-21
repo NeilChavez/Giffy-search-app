@@ -22,19 +22,15 @@ export default function SearchPage() {
   //isNearToScreen, setPage]
   return (
     <>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <>
-          <section className="ListOfGifs">
-            <ListOfGifs gifs={gifs} />
-          </section>
-          <div
-            ref={externalRef}
-            style={{ background: "skyblue", height: "1rem" }}
-          ></div>
-        </>
-      )}
+    <h2>{keyword}</h2>
+      <section className="ListOfGifs">
+        <ListOfGifs gifs={gifs} />
+        {loading ? <Spinner/> : null}
+      </section>
+      <div
+        ref={externalRef}
+        style={{ background: "skyblue", height: "1rem" }}
+      ></div>
     </>
   );
 }

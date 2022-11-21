@@ -22,9 +22,12 @@ export default function Home() {
     },
     [navigate]
   );
+
   return (
     <div>
       <SearchForm handleSubmit={handleSubmit} />
+
+      <h2>Last search: {localStorage.getItem("lastKeyword")} </h2>
       <div className="App-main">
         <section className="ListOfGifs">
           {loading ? <Spinner /> : <ListOfGifs gifs={gifs} />}

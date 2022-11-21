@@ -13,7 +13,7 @@ export function useIsNearToScreen({
     let observer;
 
     const element = externalRef ? externalRef.current : fromRef.current;
-    console.log(element)
+
 
     const options = {
       rootMargin: distance,
