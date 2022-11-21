@@ -10,5 +10,4 @@ export function getSingleGif({ id }) {
       const urlGif = images.downsized_medium.url;
       return { id, title, urlGif };
     })
-    .catch((err) => console.error(err));
 }

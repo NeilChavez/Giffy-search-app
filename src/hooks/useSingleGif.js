@@ -13,7 +13,10 @@ export function useSingleGif({ id }) {
     if (!gif) {
       setIsLoading(true);
       getSingleGif({ id })
-        .then((res) => setGif(res))
+        .then((res) => {
+            setGif(res)
+            console.log(res)
+        })
         .catch(() => {
           setIsError(true);
         })
