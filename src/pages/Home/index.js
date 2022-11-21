@@ -6,6 +6,7 @@ import TrendingSearchTerms from "../../components/TrendingSearchTerms";
 import SearchForm from "../../components/SearchForm";
 import "./Home.css";
 import { useCallback } from "react";
+import { Helmet } from "react-helmet";
 
 export default function Home() {
   const { gifs, loading } = useGifs();
@@ -25,6 +26,10 @@ export default function Home() {
 
   return (
     <div>
+      <Helmet>
+        <title> Giffy | Home </title>
+        <meta name="description" content="Home Page | Giffy"></meta>
+      </Helmet>
       <SearchForm handleSubmit={handleSubmit} />
 
       <h2>Last search: {localStorage.getItem("lastKeyword")} </h2>
