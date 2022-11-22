@@ -20,9 +20,12 @@ function App() {
       <GifsContextProvider>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/search/:keyword" element={<SearchPage />} />
+          <Route path="/search/:keyword">
+            <Route path=":rating" element={<SearchPage />} />
+            <Route path="" element={<SearchPage />} />
+          </Route>
           <Route path="/gif/:id" element={<Details />} />
-          <Route path="/404" element={<h2>GIF NOT FOUND :( - 404</h2>}/>
+          <Route path="/404" element={<h2>GIF NOT FOUND :( - 404</h2>} />
         </Routes>
       </GifsContextProvider>
     </div>

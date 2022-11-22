@@ -1,22 +1,35 @@
 import { memo, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { RATINGS } from "../../settings/settings";
 
-function SearchForm({ handleSubmit }) {
-  const [keyword, setKeyword] = useState("");
+function SearchForm({ initialKeyword = "", initialRating = RATINGS[0] }) {
+  const [keyword, setKeyword] = useState(initialKeyword);
+  const [rating, setRating] = useState(initialRating);
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setKeyword(e.target.value);
   };
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    handleSubmit({ keyword });
+    navigate(`/search/${keyword}/${rating}`);
+  };
+  const handleOnChange = (e) => {
+    setRating(e.target.value);
   };
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Search a gif..."
         onChange={handleChange}
         value={keyword}
       />
+      <select onChange={handleOnChange} value={rating}>
+        <option disabled>Select a rating</option>
+        {RATINGS.map((rating) => (
+          <option key={rating}>{rating}</option>
+        ))}
+      </select>
     </form>
   );
 }

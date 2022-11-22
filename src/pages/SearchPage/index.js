@@ -4,11 +4,13 @@ import { useGifs } from "../../hooks/useGifs";
 import ListOfGifs from "../../components/ListOfGifs";
 import Spinner from "../../components/Spinner";
 import { useIsNearToScreen } from "../../hooks/useIsNearToScreen";
+import SearchForm from "../../components/SearchForm";
 import "./SearchPage.css";
+import { Helmet } from "react-helmet";
 
 export default function SearchPage() {
-  const { keyword } = useParams();
-  const { gifs, loading, setPage } = useGifs({ keyword: keyword });
+  const { keyword, rating } = useParams();
+  const { gifs, loading, setPage } = useGifs({ keyword, rating });
   const externalRef = useRef();
   const { isNearToScreen } = useIsNearToScreen({
     once: false,
@@ -19,13 +21,17 @@ export default function SearchPage() {
     if (isNearToScreen) setPage((prevPage) => prevPage + 1);
     //
   }, [isNearToScreen, setPage]);
-  //isNearToScreen, setPage]
+
   return (
     <>
-    <h2>{keyword}</h2>
+      <Helmet>
+        <title>{keyword} | Giffy</title>
+      </Helmet>
+      <SearchForm initialKeyword={keyword} initialRating={rating}/>
+      <h2>{keyword}</h2>
       <section className="ListOfGifs">
         <ListOfGifs gifs={gifs} />
-        {loading ? <Spinner/> : null}
+        {loading ? <Spinner /> : null}
       </section>
       <div
         ref={externalRef}
