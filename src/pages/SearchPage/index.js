@@ -9,8 +9,9 @@ import "./SearchPage.css";
 import { Helmet } from "react-helmet";
 
 export default function SearchPage() {
-  const { keyword, rating } = useParams();
-  const { gifs, loading, setPage } = useGifs({ keyword, rating });
+  const { keyword, rating, language } = useParams();
+  const { gifs, loading, setPage } = useGifs({ keyword, rating, language });
+  
   const externalRef = useRef();
   const { isNearToScreen } = useIsNearToScreen({
     once: false,

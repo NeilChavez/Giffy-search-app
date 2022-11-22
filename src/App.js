@@ -21,7 +21,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search/:keyword">
-            <Route path=":rating" element={<SearchPage />} />
+            <Route path=":rating" element={<SearchPage />} >
+              <Route path=":language" element={<SearchPage/>}/>
+              <Route path="" element={<SearchPage/>}/>
+            </Route>
             <Route path="" element={<SearchPage />} />
           </Route>
           <Route path="/gif/:id" element={<Details />} />
