@@ -4,10 +4,12 @@ import SearchPage from "./pages/SearchPage";
 import "./App.css";
 import Details from "./pages/Details";
 import { GifsContextProvider } from "./context/GifsContext";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div className="App">
+      <Header />
       <nav className="App-nav">
         <Link className="Link-home" to="/">
           <img
@@ -21,9 +23,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search/:keyword">
-            <Route path=":rating" element={<SearchPage />} >
-              <Route path=":language" element={<SearchPage/>}/>
-              <Route path="" element={<SearchPage/>}/>
+            <Route path=":rating" element={<SearchPage />}>
+              <Route path=":language" element={<SearchPage />} />
+              <Route path="" element={<SearchPage />} />
             </Route>
             <Route path="" element={<SearchPage />} />
           </Route>
