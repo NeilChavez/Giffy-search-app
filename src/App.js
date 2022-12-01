@@ -6,36 +6,39 @@ import Details from "./pages/Details";
 import { GifsContextProvider } from "./context/GifsContext";
 import Header from "./components/Header";
 import Login from "./pages/Login";
+import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <nav className="App-nav">
-        <Link className="Link-home" to="/">
-          <img
-            src="/assets/giffy-logo.png"
-            className="Logo-img"
-            alt="main logo"
-          />
-        </Link>
-      </nav>
-      <GifsContextProvider>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/search/:keyword">
-            <Route path=":rating" element={<SearchPage />}>
-              <Route path=":language" element={<SearchPage />} />
+    <AuthContextProvider>
+      <div className="App">
+        <Header />
+        <nav className="App-nav">
+          <Link className="Link-home" to="/">
+            <img
+              src="/assets/giffy-logo.png"
+              className="Logo-img"
+              alt="main logo"
+            />
+          </Link>
+        </nav>
+        <GifsContextProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/search/:keyword">
+              <Route path=":rating" element={<SearchPage />}>
+                <Route path=":language" element={<SearchPage />} />
+                <Route path="" element={<SearchPage />} />
+              </Route>
               <Route path="" element={<SearchPage />} />
             </Route>
-            <Route path="" element={<SearchPage />} />
-          </Route>
-          <Route path="/gif/:id" element={<Details />} />
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/404" element={<h2>GIF NOT FOUND :( - 404</h2>} />
-        </Routes>
-      </GifsContextProvider>
-    </div>
+            <Route path="/gif/:id" element={<Details />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/404" element={<h2>GIF NOT FOUND :( - 404</h2>} />
+          </Routes>
+        </GifsContextProvider>
+      </div>
+    </AuthContextProvider>
   );
 }
 
