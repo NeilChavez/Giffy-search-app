@@ -14,7 +14,7 @@ export default function Login() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("manda:", form);
+    console.log("send:", form);
   };
   return (
     <form onSubmit={handleSubmit}>
