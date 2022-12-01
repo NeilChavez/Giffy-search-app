@@ -5,7 +5,7 @@ import "./App.css";
 import Details from "./pages/Details";
 import { GifsContextProvider } from "./context/GifsContext";
 import Header from "./components/Header";
-import Login from "./components/Login";
+import Login from "./pages/Login";
 
 function App() {
   return (

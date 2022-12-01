@@ -15,6 +15,8 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("send:", form);
+    //registra utente
+    //manda a navigation /home
   };
   return (
     <form onSubmit={handleSubmit}>
