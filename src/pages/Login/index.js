@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useAuth } from "../../hooks/useAuth";
 const initialState = {
   email: "",
   password: "",
 };
 export default function Login() {
   const [form, setForm] = useState(initialState);
+  const value = useAuth();
+ 
 
   const handleChange = (e) => {
     setForm({
@@ -20,6 +23,7 @@ export default function Login() {
   };
   return (
     <form onSubmit={handleSubmit}>
+       {console.log(value)}
       <input
         onChange={handleChange}
         name="email"
