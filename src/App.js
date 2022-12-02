@@ -6,7 +6,7 @@ import Details from "./pages/Details";
 import { GifsContextProvider } from "./context/GifsContext";
 import Header from "./components/Header";
 import Login from "./pages/Login";
-import { AuthContextProvider } from "./context/AuthContext";
+import AuthContextProvider from "./context/AuthContext";
 
 function App() {
   return (

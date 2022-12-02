@@ -5,11 +5,11 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {
-  const SignUp = (email, password) =>
+  const signUp = (email, password) =>
     createUserWithEmailAndPassword(auth, email, password);
 
   return (
-    <AuthContext.Provider value={{ SignUp }}> {children}</AuthContext.Provider>
+    <AuthContext.Provider value={{signUp }}> {children}</AuthContext.Provider>
   );
 }
 

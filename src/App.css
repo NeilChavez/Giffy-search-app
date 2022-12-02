@@ -2,6 +2,7 @@
   text-align: center;
   background-color: #232222;
   color: #fff;
+  min-height: 100vh
 }
 
 .App-nav {
