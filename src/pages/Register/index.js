@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import "./Register.css";
 const initialState = {
   email: "",
   password: "",
 };
-export default function Login() {
+export default function Register() {
   const [form, setForm] = useState(initialState);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { signUp } = useAuth();
 
   const handleChange = (e) => {
     setForm({
@@ -20,7 +20,7 @@ export default function Login() {
   };
   const handleSubmit = async (email, password) => {
     try {
-      await login(email, password);
+      await signUp(email, password);
       navigate("/");
     } catch (err) {
       console.warn(err);
@@ -37,7 +37,7 @@ export default function Login() {
         </div>
       )}
       <div className="Form-wrapper">
-        <h2>Login</h2>
+        <h2>Register</h2>
         <form
           className="Form"
           onSubmit={(e) => {
@@ -59,7 +59,7 @@ export default function Login() {
             placeholder="insert your password"
             value={form.password}
           />
-          <input type="submit" value="Login" />
+          <input type="submit" value="Register" />
         </form>
       </div>
     </>

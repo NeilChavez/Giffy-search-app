@@ -1,12 +1,16 @@
 import { Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Home";
-import SearchPage from "./pages/SearchPage";
-import "./App.css";
+
 import Details from "./pages/Details";
-import { GifsContextProvider } from "./context/GifsContext";
 import Header from "./components/Header";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
+import SearchPage from "./pages/SearchPage";
+
 import AuthContextProvider from "./context/AuthContext";
+import { GifsContextProvider } from "./context/GifsContext";
+
+import "./App.css";
 
 function App() {
   return (
@@ -33,7 +37,9 @@ function App() {
               <Route path="" element={<SearchPage />} />
             </Route>
             <Route path="/gif/:id" element={<Details />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+
             <Route path="/404" element={<h2>GIF NOT FOUND :( - 404</h2>} />
           </Routes>
         </GifsContextProvider>

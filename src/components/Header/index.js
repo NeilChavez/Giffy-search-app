@@ -9,8 +9,14 @@ export default function Header() {
       {isLogged ? (
         <Link to="/login">Logout</Link>
       ) : (
+        <>
+        
         <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link>
+        </>
+        
       )}
+   
     </header>
   );
 }
