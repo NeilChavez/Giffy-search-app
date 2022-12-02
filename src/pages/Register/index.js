@@ -19,6 +19,7 @@ export default function Register() {
     });
   };
   const handleSubmit = async (email, password) => {
+    //manda a navigation /home, se tutto va bene
     try {
       await signUp(email, password);
       navigate("/");
@@ -27,7 +28,6 @@ export default function Register() {
       setError(err);
       console.warn("sono nel catch, qualcosa e' andato male");
     }
-    //manda a navigation /home
   };
   return (
     <>
