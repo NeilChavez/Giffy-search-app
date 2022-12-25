@@ -11,7 +11,12 @@ import {
 const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() =>
+    JSON.parse(window.sessionStorage.getItem("user"))
+  );
+
+  const [favorites, setFavorites] = useState([]);
+
   const [loading, setLoading] = useState(false);
 
   const signUp = (email, password) => {
@@ -29,15 +34,30 @@ function AuthContextProvider({ children }) {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        window.sessionStorage.setItem("user", JSON.stringify(user));
       } else {
         setUser(null);
+        window.sessionStorage.removeItem("user");
       }
       setLoading(false);
     });
+    return () => {
+      window.sessionStorage.removeItem("user");
+    };
   }, []);
 
   return (
-    <AuthContext.Provider value={{ signUp, login, user, loading, logout }}>
+    <AuthContext.Provider value={
+      {
+        signUp,
+        login,
+        user,
+        loading,
+        logout,
+        favorites,
+        setFavorites
+      }
+    }>
       {children}
     </AuthContext.Provider>
   );

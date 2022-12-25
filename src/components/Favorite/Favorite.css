@@ -1,8 +1,7 @@
-.heart {
-  background-color: rgba(73, 73, 73, 0.5);
+.thumb {
   z-index: 99;
   border-radius: 50%;
-  padding: 0.5rem;
+  padding: 0.6rem;
   width: 3rem;
   height: 3rem;
   position: absolute;
@@ -15,8 +14,13 @@
   border: thin solid #fff;
 }
 
-.heart:hover {
+.thumb:hover {
   cursor: pointer;
   transform: scale(1.2);
   transition: transform 0.1s linear;
+}
+
+.thumb img {
+  max-width: 100%;
+  max-width: auto;
 }

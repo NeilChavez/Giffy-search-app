@@ -10,10 +10,10 @@ export default function Header() {
   const handleLogout = async () => {
     try {
       await logout();
-      console.log("log out eseuito correttamente");
+      // console.log("log out eseuito correttamente");
     } catch (err) {
       console.warn(err);
-      console.log("log out  qualcosa e andato storto");
+      // console.log("log out  qualcosa e andato storto");
     }
   };
   return (
