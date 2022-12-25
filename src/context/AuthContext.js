@@ -38,12 +38,16 @@ function AuthContextProvider({ children }) {
         window.sessionStorage.setItem("user", JSON.stringify(user));
       } else {
         setUser(null);
+        setFavorites([])
         window.sessionStorage.removeItem("user");
+        window.sessionStorage.removeItem("favorites");
       }
       setLoading(false);
     });
     return () => {
+      setFavorites([])
       window.sessionStorage.removeItem("user");
+      window.sessionStorage.removeItem("favorites");
     };
   }, []);
 
