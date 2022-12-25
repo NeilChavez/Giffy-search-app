@@ -7,14 +7,13 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function useUser() {
-    const { favorites, setFavorites } = useContext(AuthContext);
+    const { favorites, setFavorites , setData} = useContext(AuthContext);
     const { user } = useAuth();
-    const [data, setData] = useState(null);
     const nagivate = useNavigate();
 
     // send the favoite to firebase
     const addFavorite = useCallback(async (id) => {
-        if (!user) nagivate("/login");
+        if (!user) return nagivate("/login");
         try {
             const documentRef = collection(db, "favorites");
             const data = await addDoc(documentRef, {
@@ -26,7 +25,7 @@ export function useUser() {
         } catch (err) {
             console.log(err);
         }
-    }, [user, nagivate])
+    }, [user, nagivate, setData])
 
     // delete a favorite 
     const deleteFavorite = useCallback(async (idGif) => {
@@ -38,29 +37,7 @@ export function useUser() {
         } catch (err) {
             console.log(err)
         }
-    }, [favorites])
-
-
-    // get the favorites 
-    useEffect(() => {
-        const getFavorites = async () => {
-            try {
-                const q = query(collection(db, "favorites"), where("userId", "==", user.uid))
-                const querySnapshot = await getDocs(q);
-                let newFavoriteState = [];
-                querySnapshot.forEach(doc => {
-                    newFavoriteState = [...newFavoriteState, { ...doc.data(), docId: doc.id }]
-                })
-                setFavorites(newFavoriteState)
-                console.log(newFavoriteState)
-                window.sessionStorage.setItem("favorites", JSON.stringify(newFavoriteState))
-            } catch (err) {
-                console.log(err)
-            }
-        }
-        getFavorites();
-    }, [data, setFavorites, user])
-
+    }, [favorites, setData])
 
 
     return {

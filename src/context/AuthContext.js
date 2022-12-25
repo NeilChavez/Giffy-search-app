@@ -7,6 +7,9 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
+import { db } from "../firebase"
+import { collection, query, where, getDocs } from "firebase/firestore"
+
 
 const AuthContext = createContext();
 
@@ -17,7 +20,7 @@ function AuthContextProvider({ children }) {
 
   const [favorites, setFavorites] = useState(() =>
     JSON.parse(window.sessionStorage.getItem("favorites")) || []);
-
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const signUp = (email, password) => {
@@ -51,6 +54,29 @@ function AuthContextProvider({ children }) {
     };
   }, []);
 
+  // get the favorites 
+  useEffect(() => {
+    const getFavorites = async () => {
+      if(!user) return;
+      try {
+        const q = query(collection(db, "favorites"), where("userId", "==", user?.uid))
+        const querySnapshot = await getDocs(q);
+        let newFavoriteState = [];
+        querySnapshot.forEach(doc => {
+          newFavoriteState = [...newFavoriteState, { ...doc.data(), docId: doc.id }]
+        })
+        setFavorites(newFavoriteState)        
+        window.sessionStorage.setItem("favorites", JSON.stringify(newFavoriteState))
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getFavorites();
+    console.log("get fav useeffect si effettua")
+  }, [data, user]);
+
+
+
   return (
     <AuthContext.Provider value={
       {
@@ -59,6 +85,8 @@ function AuthContextProvider({ children }) {
         user,
         loading,
         logout,
+        data,
+        setData,
         favorites,
         setFavorites
       }
