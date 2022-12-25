@@ -24,3 +24,9 @@
   max-width: 100%;
   max-width: auto;
 }
+
+.SkeletonThumb {
+  width: 100%;
+  height: 100%;
+}
+

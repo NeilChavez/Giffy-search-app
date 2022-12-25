@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { db } from "../firebase";
-import { addDoc, collection, query, where, getDocs } from "firebase/firestore"
+import { addDoc, collection, query, where, getDocs, deleteDoc, doc } from "firebase/firestore"
 import { AuthContext } from "../context/AuthContext";
 import { useAuth } from "./useAuth";
 import { useContext } from "react";
@@ -12,7 +12,7 @@ export function useUser() {
     const [data, setData] = useState(null);
     const nagivate = useNavigate();
 
-
+    // send the favoite to firebase
     const addFavorite = useCallback(async (id) => {
         if (!user) nagivate("/login");
         try {
@@ -28,6 +28,21 @@ export function useUser() {
         }
     }, [user, nagivate])
 
+    // delete a favorite 
+    const deleteFavorite = useCallback(async (idGif) => {
+        console.log('vuoicancellare dai favoriti', idGif)
+        try {
+            const favoriteToDelete = favorites.find(favorite => favorite.favoriteGifId === idGif);
+            const { docId } = favoriteToDelete;
+            const data = await deleteDoc(doc(db, "favorites", docId))
+            console.log('remosso dai favoriti avvenuto con succcesso', data);
+            setData(data);
+        } catch (err) {
+            console.log(err)
+        }
+    }, [favorites])
+
+
     // get the favorites 
     useEffect(() => {
         const getFavorites = async () => {
@@ -36,12 +51,7 @@ export function useUser() {
                 const querySnapshot = await getDocs(q);
                 let newFavoriteState = [];
                 querySnapshot.forEach(doc => {
-                    newFavoriteState = [
-                        ...newFavoriteState,
-                        {
-                            ...doc.data()
-                        }
-                    ]
+                    newFavoriteState = [...newFavoriteState, { ...doc.data(), docId: doc.id }]
                 })
                 setFavorites(newFavoriteState)
             } catch (err) {
@@ -56,6 +66,7 @@ export function useUser() {
     return {
         favorites,
         setFavorites,
-        addFavorite
+        addFavorite,
+        deleteFavorite
     }
 }
