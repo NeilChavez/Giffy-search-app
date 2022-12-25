@@ -15,7 +15,8 @@ function AuthContextProvider({ children }) {
     JSON.parse(window.sessionStorage.getItem("user"))
   );
 
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(() =>
+    JSON.parse(window.sessionStorage.getItem("favorites")) || []);
 
   const [loading, setLoading] = useState(false);
 

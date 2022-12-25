@@ -30,12 +30,10 @@ export function useUser() {
 
     // delete a favorite 
     const deleteFavorite = useCallback(async (idGif) => {
-        console.log('vuoicancellare dai favoriti', idGif)
         try {
             const favoriteToDelete = favorites.find(favorite => favorite.favoriteGifId === idGif);
             const { docId } = favoriteToDelete;
             const data = await deleteDoc(doc(db, "favorites", docId))
-            console.log('remosso dai favoriti avvenuto con succcesso', data);
             setData(data);
         } catch (err) {
             console.log(err)
@@ -54,6 +52,8 @@ export function useUser() {
                     newFavoriteState = [...newFavoriteState, { ...doc.data(), docId: doc.id }]
                 })
                 setFavorites(newFavoriteState)
+                console.log(newFavoriteState)
+                window.sessionStorage.setItem("favorites", JSON.stringify(newFavoriteState))
             } catch (err) {
                 console.log(err)
             }
