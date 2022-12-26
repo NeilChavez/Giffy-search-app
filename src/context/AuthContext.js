@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import {useEffect, useState, createContext, useCallback } from "react";
 
 import { auth } from "../firebase";
 import {
@@ -23,15 +23,15 @@ function AuthContextProvider({ children }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const signUp = (email, password) => {
+  const signUp = useCallback((email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
-  };
-  const login = (email, password) => {
+  }, [])
+  const login = useCallback((email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
-  };
-  const logout = () => {
+  }, [])
+  const logout = useCallback(() => {
     return signOut(auth);
-  };
+  }, [])
 
   useEffect(() => {
     setLoading(true);

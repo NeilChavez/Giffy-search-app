@@ -1,0 +1,23 @@
+.Modal {
+  background-color: rgba(255, 255, 255, 0.794);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000
+}
+.Modal-content {
+  background-color: #111;
+  border: medium solid rgb(180, 104, 104);
+  width: 300px;
+  padding: 10px 20px;
+  height: 80vh;
+  margin: 10vh auto;
+  position: relative;
+}
+
+.Modal-content button {
+  display: block;
+  margin-bottom: 32px;
+}

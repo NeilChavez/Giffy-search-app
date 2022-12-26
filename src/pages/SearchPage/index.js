@@ -20,7 +20,7 @@ export default function SearchPage() {
 
   useEffect(() => {
     if (isNearToScreen) setPage((prevPage) => prevPage + 1);
-    //
+    
   }, [isNearToScreen, setPage]);
 
   return (

@@ -9,11 +9,13 @@ import { useNavigate } from "react-router-dom";
 export function useUser() {
     const { favorites, setFavorites , setData} = useContext(AuthContext);
     const { user } = useAuth();
-    const nagivate = useNavigate();
+    // const nagivate = useNavigate();
 
+
+    
     // send the favoite to firebase
     const addFavorite = useCallback(async (id) => {
-        if (!user) return nagivate("/login");
+
         try {
             const documentRef = collection(db, "favorites");
             const data = await addDoc(documentRef, {
@@ -25,7 +27,7 @@ export function useUser() {
         } catch (err) {
             console.log(err);
         }
-    }, [user, nagivate, setData])
+    }, [user, setData])
 
     // delete a favorite 
     const deleteFavorite = useCallback(async (idGif) => {
