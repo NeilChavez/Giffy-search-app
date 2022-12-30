@@ -36,6 +36,11 @@ export default function Register() {
       validationSchema={validationWithYup}
       onSubmit={handleSubmit}>
       <Form>
+        {error && (
+          <div style={{ border: "thin solid red", display: "inline-block" }}>
+            {error.code}
+          </div>
+        )}
         <Field
           name="email"
           id="email"
