@@ -11,6 +11,7 @@ import AuthContextProvider from "./context/AuthContext";
 import { GifsContextProvider } from "./context/GifsContext";
 
 import "./App.css";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
 
-            <Route path="/404" element={<h2>GIF NOT FOUND :( - 404</h2>} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </GifsContextProvider>
       </div>

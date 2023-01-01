@@ -1,7 +1,9 @@
 import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { RATINGS, LANGUAGES } from "../../settings/settings";
-import {useForm} from "./hook"
+import { useForm } from "./hook"
+
+import "./SearchForm.css"
 
 
 function SearchForm({
@@ -63,6 +65,7 @@ function SearchForm({
           <option key={language}>{language}</option>
         ))}
       </select>
+      <button type="submit" className="btn">Search</button>
     </form>
   );
 }

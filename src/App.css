@@ -2,7 +2,7 @@
   text-align: center;
   background-color: #232222;
   color: #fff;
-  min-height: 100vh
+  min-height: 100vh;
 }
 
 .App-nav {
@@ -44,6 +44,46 @@
   border: thick solid #72f69a;
 }
 
+.btn {
+  border: medium solid #963ac5;
+  border-color: #963ac5;
+  background-color: #963ac5;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5rem 0.5rem;
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+  outline: none;
+}
+
+.page-error {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  text-align: center;
+}
+
+.page-error .code-error {
+  font-size: 5rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.page-error .msg-error {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.page-error .gif-error {
+  margin: 1rem auto;
+  width: 250px;
+  height: 250px;
+}
 
 @media (min-width: 576px) {
   .App-nav {
