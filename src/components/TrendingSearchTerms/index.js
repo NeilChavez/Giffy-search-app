@@ -10,6 +10,7 @@ export default function LazyTrendingSearchTerms() {
 
   return (
     <section className="TrendingSearchTerms-section" ref={fromRef}>
+      <h2>Trending Terms</h2>
       <Suspense fallback={<Spinner/>}>
         {isNearToScreen ? <TrendingSearchTerms /> : <Spinner/>}
       </Suspense>

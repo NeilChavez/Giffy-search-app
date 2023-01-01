@@ -11,13 +11,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: thin solid #fff;
+  border: medium solid black;
 }
 
 .thumb:hover {
   cursor: pointer;
-  transform: scale(1.2);
-  transition: transform 0.1s linear;
+  /* transform: scale(1.2);
+  transition: transform 0.1s linear; */
+  border: medium solid #704cf6
 }
 
 .thumb img {

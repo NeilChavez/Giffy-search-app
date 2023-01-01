@@ -18,15 +18,6 @@ function App() {
     <AuthContextProvider>
       <div className="App">
         <Header />
-        <nav className="App-nav">
-          <Link className="Link-home" to="/">
-            <img
-              src="/assets/giffy-logo.png"
-              className="Logo-img"
-              alt="main logo"
-            />
-          </Link>
-        </nav>
         <GifsContextProvider>
           <Routes>
             <Route path="/" element={<Home />} />

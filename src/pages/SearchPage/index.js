@@ -11,7 +11,7 @@ import { Helmet } from "react-helmet";
 export default function SearchPage() {
   const { keyword, rating, language } = useParams();
   const { gifs, loading, setPage } = useGifs({ keyword, rating, language });
-  
+
   const externalRef = useRef();
   const { isNearToScreen } = useIsNearToScreen({
     once: false,
@@ -20,7 +20,7 @@ export default function SearchPage() {
 
   useEffect(() => {
     if (isNearToScreen) setPage((prevPage) => prevPage + 1);
-    
+
   }, [isNearToScreen, setPage]);
 
   return (
@@ -28,15 +28,15 @@ export default function SearchPage() {
       <Helmet>
         <title>{keyword} | Giffy</title>
       </Helmet>
-      <SearchForm initialKeyword={keyword} initialRating={rating}/>
+      <SearchForm initialKeyword={keyword} initialRating={rating} />
       <h2>{keyword}</h2>
-      <section className="ListOfGifs">
+      <section className="ListOfGifs container">
         <ListOfGifs gifs={gifs} />
-        {loading ? <Spinner /> : null}
       </section>
+      {loading ? <Spinner /> : null}
       <div
         ref={externalRef}
-        style={{ background: "skyblue", height: "1rem" }}
+        style={ {height: "1rem" }}
       ></div>
     </>
   );

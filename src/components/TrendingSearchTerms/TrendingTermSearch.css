@@ -2,15 +2,14 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
+  justify-content: flex-start;
+
 }
 .Term {
   border: thick solid transparent;
 }
-.Term a{
-    padding: 0.3rem 0.5rem
+.Term a {
+  padding: 0.3rem 0.5rem;
 }
 .Term:nth-child(even) a {
   color: #963ac5;
@@ -33,4 +32,10 @@
 
 .TrendingTermSearch > :nth-child(odd):hover {
   border: thick solid #72f69a;
+}
+
+@media (min-width: 992px) {
+  .TrendingTermSearch {
+    justify-content: flex-end;
+  }
 }

@@ -1,6 +1,6 @@
 .Form-wrapper {
-  border: thin solid rgb(232, 232, 232);
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,30 +10,24 @@
   margin-left: auto;
   margin-right: auto;
 }
-.Form {
+.Form-wrapper > form {
   padding: 0.5rem 0;
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 250px;
-  gap: 1.5rem;
+  gap: 1rem;
 }
-.Form input {
+.Form-wrapper > form input {
   font-size: 1.1rem;
-  color: #fff;
   text-align: center;
-  background: transparent;
-  border: thin solid #fff;
   padding: 0.3rem 1rem;
 }
-.Form input::placeholder {
-  color: #fff;
-}
-.Form input[type='submit'] {
+
+.Form-wrapper > form button[type='submit'] {
   width: 50%;
   margin-right: auto;
   margin-left: auto;
-  border: thin solid #fff;
   padding: 0.5rem;
 }
 

@@ -1,12 +1,21 @@
-form > input,
-form > button {
+
+.Search-form {
+  padding: 2rem 0;
+}
+.Search-form > input,
+.Search-form > button {
   padding: 0.5rem 0.5rem;
   height: 100%;
   border: medium solid #963ac5;
 }
 
-form select {
+.Search-form select {
   border: medium solid #963ac5;
   padding: 0.45rem 0.2rem;
   width: 3rem;
+}
+.Search-form > input:hover,
+.Search-form > button:hover,
+.Search-form select:hover {
+  border: medium solid #72f69a;
 }

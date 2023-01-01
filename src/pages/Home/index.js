@@ -3,14 +3,13 @@ import ListOfGifs from "../../components/ListOfGifs";
 import { useGifs } from "../../hooks/useGifs";
 import TrendingSearchTerms from "../../components/TrendingSearchTerms";
 import SearchForm from "../../components/SearchForm";
-import "./Home.css";
 import { Helmet } from "react-helmet";
 
 export default function Home() {
   const { gifs, loading } = useGifs();
 
   return (
-    <div>
+    <section className="container">
       <Helmet>
         <title> Giffy | Home </title>
         <meta name="description" content="Home Page | Giffy"></meta>
@@ -23,6 +22,6 @@ export default function Home() {
         </section>
         <TrendingSearchTerms />
       </div>
-    </div>
+    </section>
   );
 }

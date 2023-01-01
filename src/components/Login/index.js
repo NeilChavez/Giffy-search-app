@@ -50,17 +50,18 @@ export default function Login({ onLogin }) {
                         onChange={handleChange}
                         name="email"
                         type="email"
-                        placeholder="insert your mail"
+                        placeholder="Insert your mail"
+                         autoComplete="off"
                         value={form.email}
                     />
                     <input
                         onChange={handleChange}
                         name="password"
                         type="password"
-                        placeholder="insert your password"
+                        placeholder="Insert your password" autoComplete="off"
                         value={form.password}
                     />
-                    <input type="submit" value="Login" />
+                    <input type="submit" className="btn" value="Login" />
                 </form>
             </div>
         </>

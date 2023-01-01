@@ -5,11 +5,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1000
+  z-index: 1000;
 }
 .Modal-content {
-  background-color: #111;
-  border: medium solid rgb(180, 104, 104);
+  background-color: #222;
   width: 300px;
   padding: 10px 20px;
   height: 80vh;
@@ -17,7 +16,19 @@
   position: relative;
 }
 
-.Modal-content button {
+.Close-modal {
   display: block;
   margin-bottom: 32px;
+  cursor: pointer;
+  background-color: #72f69a;
+  color: #fff;
+  outline: none;
+  border: medium solid transparent;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.Close-modal:hover {
+  border: medium solid #963ac5;
 }

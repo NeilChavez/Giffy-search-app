@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from "yup";
 import { useAuth } from "../../hooks/useAuth"
+import "./Register.css"
 const initialValues = {
   email: "",
   password: ""
@@ -31,34 +32,40 @@ export default function Register() {
     }
   }
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationWithYup}
-      onSubmit={handleSubmit}>
-      <Form>
-        {error && (
-          <div style={{ border: "thin solid red", display: "inline-block" }}>
-            {error.code}
-          </div>
-        )}
-        <Field
-          name="email"
-          id="email"
-          type="text"
-        />
-        <ErrorMessage name="email" />
-        <Field
-          name="password"
-          id="password"
-          type="text" />
-        <ErrorMessage name="password" />
-        <button
-          type="submit"
-          className="btn"
-        >
-          Registrate
-        </button>
-      </ Form>
-    </Formik >
+    <div className="Form-wrapper">
+      <h2>Register</h2>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationWithYup}
+        onSubmit={handleSubmit}
+      >
+        <Form>
+          <Field
+            name="email"
+            id="email"
+            type="text"
+            placeholder="Insert your email"
+          />
+          <ErrorMessage name="email">{msg => <small className="error">{msg}</small>}</ErrorMessage>
+
+          <Field
+            name="password"
+            id="password"
+            type="text" placeholder="Insert a password" />
+          <ErrorMessage name="password">{msg => <small className="error">{msg}</small>}</ErrorMessage>
+          {error && (
+            <small className="error">
+              {error.code}
+            </small>
+          )}
+          <button
+            type="submit"
+            className="btn"
+          >
+            Registrate
+          </button>
+        </ Form>
+      </Formik >
+    </div>
   )
 }

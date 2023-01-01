@@ -17,17 +17,29 @@ export default function Header() {
     }
   };
   return (
-    <header className="gf-header">
-      {isLogged ? (
-        <Link to="/login" onClick={handleLogout}>
-          Logout
-        </Link>
-      ) : (
-        <>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
-        </>
-      )}
+    <header className="gf-header container">
+      <nav className="App-nav">
+        <div>
+          <Link className="Link-home" to="/">
+            <h1>
+              Giffy Search App
+            </h1>
+          </Link>
+        </div>
+
+        <div className="login-out-wrapper">
+          {isLogged ? (
+            <Link to="/login" className="btn " onClick={handleLogout}>
+              Logout
+            </Link>
+          ) : (
+            <>
+              <Link to="/login" className="btn">Login</Link>
+              <Link to="/register" className="btn btn-logout">Register</Link>
+            </>
+          )}
+        </div>
+      </nav>
     </header>
   );
 }

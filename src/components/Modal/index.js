@@ -5,13 +5,14 @@ function Modal({ children, onClose }) {
     const handleClick = (e) => {
         e.stopPropagation()
     }
+    const handleClose = (e)=>{
+        e.preventDefault();
+        onClose()
+    }
     return (
         <div className="Modal" onClick={handleClick}>
             <div className="Modal-content">
-                <button onClick={(e) => {
-                    e.preventDefault();
-                    onClose()
-                }}>✖️</button>
+                <button onClick={handleClose} className="Close-modal">✖️</button>
                 {children}
             </div>
         </div>

@@ -1,14 +1,22 @@
 .gf-header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 1rem;
+  gap: 0.5rem;
 }
-.gf-header a {
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: 600;
-  border: medium solid #fff;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+
+.gf-header .btn-logout {
+  background-color: #704cf6;
+  border: medium solid #704cf6;
+}
+.App-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 100%;
+}
+.login-out-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.login-out-wrapper a:hover{
+  border: medium solid #72f69a;
 }

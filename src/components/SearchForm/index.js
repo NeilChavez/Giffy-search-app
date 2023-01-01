@@ -46,7 +46,7 @@ function SearchForm({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="Search-form">
       <input
         type="text"
         placeholder="Search a gif..."
