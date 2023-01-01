@@ -10,13 +10,11 @@ const initialValues = {
 }
 const validationWithYup = Yup.object({
   email: Yup.string()
-    .max(25, "L'email deve essere massimo di 15 caratteri")
-    .min(1, "You need to insert a value")
-    .required("Required"),
+    .email("This is a not valid email")
+    .required("This field is required"),
   password: Yup.string()
-    .max(25, "La password deve essere massimo 10 caratteri")
-    .min(1, "You need to insert a value")
-    .required("Required")
+    .min(6, "You need to insert at least 6 characters")
+    .required("This field is required")
 })
 export default function Register() {
   const { signUp } = useAuth()
@@ -51,7 +49,7 @@ export default function Register() {
           <Field
             name="password"
             id="password"
-            type="text" placeholder="Insert a password" />
+            type="password" placeholder="Insert a password" />
           <ErrorMessage name="password">{msg => <small className="error">{msg}</small>}</ErrorMessage>
           {error && (
             <small className="error">
@@ -62,7 +60,7 @@ export default function Register() {
             type="submit"
             className="btn"
           >
-            Registrate
+            Register
           </button>
         </ Form>
       </Formik >
