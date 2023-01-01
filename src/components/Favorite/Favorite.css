@@ -11,14 +11,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: medium solid black;
+  border: medium solid transparent;
 }
 
 .thumb:hover {
   cursor: pointer;
   /* transform: scale(1.2);
   transition: transform 0.1s linear; */
-  border: medium solid #704cf6
+  border: medium solid #704cf6;
 }
 
 .thumb img {
@@ -30,4 +30,3 @@
   width: 100%;
   height: 100%;
 }
-

@@ -6,8 +6,18 @@ export function getSingleGif({ id }) {
     .then((json) => {
       const { data } = json;
 
-      const { id, title, images } = data;
+      const { id,
+        title,
+        images,
+        import_datetime,
+        user: uploadedbyUser } = data;
       const urlGif = images.downsized_medium.url;
-      return { id, title, urlGif };
+      return {
+        id,
+        title,
+        urlGif,
+        import_datetime,
+        uploadedbyUser
+      };
     })
 }
