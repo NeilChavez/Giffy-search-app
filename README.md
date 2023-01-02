@@ -8,7 +8,7 @@ The user can register and/or log in via email.
 The app allows you to search through a "Search" form. The user can also "like" the gifs and remove the "like".
 
 Here is a [Live Demo](https://giffy-app-five.vercel.app/).
-[![Live Demo](/assets/preview-home.png "Giffy Search App")](https://giffy-app-five.vercel.app/)
+[![Live Demo](./public/assets/preview-home.png "Giffy Search App")](https://giffy-app-five.vercel.app/)
 
 ## Available Scripts
 
