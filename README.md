@@ -1,13 +1,15 @@
 ## Giffy Search App
 
-This is a Giffy Search App which brings information from Giphy's API. This App is a single page application made with ReactJS.
+This is a Giffy Search App which brings information from Giphy's API.
+This App is a single page application made with ReactJS.
 For the Router I used React Router Dom. For the management of the forms I used Formik with Yup.
 
 For user management I used Firebase.
-The user can register and/or log in via email.
+The user can register and/or login via email.
 The app allows you to search through a "Search" form. The user can also "like" the gifs and remove the "like".
 
 Here is a [Live Demo](https://giffy-app-five.vercel.app/).
+
 [![Live Demo](./public/assets/preview-home.png "Giffy Search App")](https://giffy-app-five.vercel.app/)
 
 ## Available Scripts
