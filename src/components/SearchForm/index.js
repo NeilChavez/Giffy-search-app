@@ -2,7 +2,6 @@ import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { RATINGS, LANGUAGES } from "../../settings/settings";
 import { useForm } from "./hook"
-
 import "./SearchForm.css"
 
 

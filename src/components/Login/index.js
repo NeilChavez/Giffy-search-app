@@ -1,69 +1,68 @@
-import { useState } from "react";
-import { useAuth } from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
-import "./Login.css";
-const initialState = {
-    email: "",
-    password: "",
-};
-export default function Login({ onLogin }) {
-    const [form, setForm] = useState(initialState);
-    const [error, setError] = useState(null);
-    const navigate = useNavigate();
-    const { login } = useAuth();
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Link } from 'react-router-dom';
+import * as Yup from "yup";
+import { useUser } from "../../hooks/useUser";
+import "./Login.css"
 
-    const handleChange = (e) => {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value,
-        });
-    };
-    const handleSubmit = async (email, password) => {
-        try {
-            await login(email, password);
-            navigate("/");
-            onLogin && onLogin();
-        } catch (err) {
-            console.warn(err);
-            setError(err);
-            console.warn("sono nel catch, qualcosa e' andato male");
-        }
-        //manda a navigation /home
-    };
+const initialValues = {
+    email: "",
+    password: ""
+}
+const validationWithYup = Yup.object({
+    email: Yup.string()
+        .email("This is a not valid email")
+        .required("This field is required"),
+    password: Yup.string()
+        .min(6, "You need to insert at least 6 characters")
+        .required("This field is required")
+})
+export default function Login({ onLogin }) {
+    const { login, error, msgError } = useUser();
+    //TODO move to useUser
+    const handleSubmit = ({ email, password }) => {
+        login(email, password);
+        onLogin && onLogin();
+    }
+
+
     return (
-        <>
-            {error && (
-                <div style={{ border: "thin solid red", display: "inline-block" }}>
-                    {error.code}
-                </div>
-            )}
-            <div className="Form-wrapper">
-                <h2>Login</h2>
-                <form
-                    className="Form"
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        handleSubmit(form.email, form.password);
-                    }}
-                >
-                    <input
-                        onChange={handleChange}
+        <div className="Form-wrapper">
+            <h2>Login</h2>
+            <Formik
+                initialValues={initialValues}
+                validationSchema={validationWithYup}
+                onSubmit={handleSubmit}
+            >
+                <Form>
+                    <Field
                         name="email"
-                        type="email"
-                        placeholder="Insert your mail"
-                         autoComplete="off"
-                        value={form.email}
+                        id="email"
+                        type="text"
+                        placeholder="Insert your email"
                     />
-                    <input
-                        onChange={handleChange}
+                    <ErrorMessage name="email">{msg => <small className="error">{msg}</small>}</ErrorMessage>
+
+                    <Field
                         name="password"
-                        type="password"
-                        placeholder="Insert your password" autoComplete="off"
-                        value={form.password}
-                    />
-                    <input type="submit" className="btn" value="Login" />
-                </form>
-            </div>
-        </>
-    );
+                        id="password"
+                        type="password" placeholder="Insert a password" />
+                    <ErrorMessage name="password">{msg => <small className="error">{msg}</small>}</ErrorMessage>
+                    {error && (
+                        <small className="error">
+                            {msgError}
+                        </small>
+                    )}
+                    <button
+                        type="submit"
+                        className="btn"
+                    >
+                        Login
+                    </button>
+                </ Form>
+            </Formik >
+
+            <p>Are you not registered yet?</p>
+            <Link to="/register" className="btn-register">Register now!</Link>
+        </div>
+    )
 }

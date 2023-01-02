@@ -30,4 +30,19 @@
     margin-left: auto;
     padding: 0.5rem;
   }
+ .Form-wrapper p {
+    color: #fff
+  }
+
+  .Form-wrapper .btn-register {
+    background-color: #704cf6;
+    border: medium solid #704cf6;
+    border-radius: 2px;
+    font-size: 13px;
+    padding: 0.2rem 0.2rem
+  }
+  
+  .Form-wrapper a:hover{
+    border: medium solid #72f69a;
+  }
   

@@ -1,17 +1,15 @@
-import { Routes, Route, Link } from "react-router-dom";
-
+import { Routes, Route } from "react-router-dom";
 import Details from "./pages/Details";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import SearchPage from "./pages/SearchPage";
-
+import ErrorPage from "./pages/ErrorPage";
 import AuthContextProvider from "./context/AuthContext";
 import { GifsContextProvider } from "./context/GifsContext";
 
 import "./App.css";
-import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (

@@ -1,20 +1,15 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import {useUser} from "../../hooks/useUser"
 import "./Header.css";
 
 export default function Header() {
-  //TODO come to this point from the backend answer
-  // yes, I did it 
-  const { user: isLogged, logout } = useAuth();
 
-  const handleLogout = async () => {
-    try {
-      await logout();
-      // console.log("log out eseuito correttamente");
-    } catch (err) {
-      console.warn(err);
-      // console.log("log out  qualcosa e andato storto");
-    }
+  const { user: isLogged } = useAuth();
+  const {logout} = useUser()
+
+  const handleLogout = () => {
+  logout(); 
   };
   return (
     <header className="gf-header container">
@@ -29,7 +24,7 @@ export default function Header() {
 
         <div className="login-out-wrapper">
           {isLogged ? (
-            <Link to="/login" className="btn " onClick={handleLogout}>
+            <Link to="/" className="btn " onClick={handleLogout}>
               Logout
             </Link>
           ) : (

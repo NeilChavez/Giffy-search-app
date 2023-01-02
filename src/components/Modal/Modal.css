@@ -7,6 +7,9 @@
   bottom: 0;
   z-index: 1000;
 }
+.Modal-content .Form-wrapper{
+  justify-content: start;
+}
 .Modal-content {
   background-color: #222;
   width: 300px;
@@ -31,4 +34,56 @@
 
 .Close-modal:hover {
   border: medium solid #963ac5;
+}
+
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.Modal-msg {
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 1rem;
+  color: #fff;
+  top: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  max-width: 100%;
+  font-style: italic;
+}
+.Modal-msg::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-color: #72f69a;
+  background-repeat: no-repeat;
+  background-size: 50% 50%, 50% 50%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  background-image: linear-gradient(#72f69a, #72f69a),
+    linear-gradient(#72f69a, #72f69a), linear-gradient(#704cf6, #704cf6),
+    linear-gradient(#963ac5, #963ac5);
+  animation: rotate 4s linear infinite;
+}
+
+.Modal-msg::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 6px;
+  top: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  background: #222;
+  border-radius: 2px;
+
 }

@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as Yup from "yup";
-import { useAuth } from "../../hooks/useAuth"
+import { useUser } from "../../hooks/useUser"
 import "./Register.css"
+
 const initialValues = {
   email: "",
   password: ""
@@ -17,17 +17,10 @@ const validationWithYup = Yup.object({
     .required("This field is required")
 })
 export default function Register() {
-  const { signUp } = useAuth()
-  const [error, setError] = useState(false);
-  const navigate = useNavigate()
-  const handleSubmit = async ({ email, password }) => {
-    try {
-      await signUp(email, password);
-      navigate("/");
-    } catch (err) {
-      console.warn(err);
-      setError(err);
-    }
+  const { error, msgError, signUp } = useUser();
+
+  const handleSubmit = ({ email, password }) => {
+    signUp(email, password);
   }
   return (
     <div className="Form-wrapper">
@@ -53,7 +46,7 @@ export default function Register() {
           <ErrorMessage name="password">{msg => <small className="error">{msg}</small>}</ErrorMessage>
           {error && (
             <small className="error">
-              {error.code}
+              {msgError}
             </small>
           )}
           <button
@@ -64,6 +57,8 @@ export default function Register() {
           </button>
         </ Form>
       </Formik >
+      <p>Are you alrealdy registered?</p>
+      <Link to="/login" className="btn-register">Login now!</Link>
     </div>
   )
 }

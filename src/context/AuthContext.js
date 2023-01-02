@@ -1,12 +1,6 @@
-import {useEffect, useState, createContext, useCallback } from "react";
-
+import { useEffect, useState, createContext } from "react";
 import { auth } from "../firebase";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-} from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { db } from "../firebase"
 import { collection, query, where, getDocs } from "firebase/firestore"
 
@@ -22,16 +16,6 @@ function AuthContextProvider({ children }) {
     JSON.parse(window.sessionStorage.getItem("favorites")) || []);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
-
-  const signUp = useCallback((email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
-  }, [])
-  const login = useCallback((email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
-  }, [])
-  const logout = useCallback(() => {
-    return signOut(auth);
-  }, [])
 
   useEffect(() => {
     setLoading(true);
@@ -57,7 +41,7 @@ function AuthContextProvider({ children }) {
   // get the favorites 
   useEffect(() => {
     const getFavorites = async () => {
-      if(!user) return;
+      if (!user) return;
       try {
         const q = query(collection(db, "favorites"), where("userId", "==", user?.uid))
         const querySnapshot = await getDocs(q);
@@ -65,7 +49,7 @@ function AuthContextProvider({ children }) {
         querySnapshot.forEach(doc => {
           newFavoriteState = [...newFavoriteState, { ...doc.data(), docId: doc.id }]
         })
-        setFavorites(newFavoriteState)        
+        setFavorites(newFavoriteState)
         window.sessionStorage.setItem("favorites", JSON.stringify(newFavoriteState))
       } catch (err) {
         console.log(err)
@@ -80,15 +64,13 @@ function AuthContextProvider({ children }) {
   return (
     <AuthContext.Provider value={
       {
-        signUp,
-        login,
         user,
         loading,
-        logout,
         data,
         setData,
         favorites,
-        setFavorites
+        setFavorites,
+        setUser
       }
     }>
       {children}

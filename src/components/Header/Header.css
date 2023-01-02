@@ -2,10 +2,6 @@
   gap: 0.5rem;
 }
 
-.gf-header .btn-logout {
-  background-color: #704cf6;
-  border: medium solid #704cf6;
-}
 .App-nav {
   display: flex;
   align-items: center;
@@ -15,6 +11,11 @@
 .login-out-wrapper {
   display: flex;
   gap: 0.5rem;
+}
+
+.gf-header .btn-logout {
+  background-color: #704cf6;
+  border: medium solid #704cf6;
 }
 
 .login-out-wrapper a:hover{

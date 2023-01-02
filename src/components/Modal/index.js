@@ -1,11 +1,11 @@
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom"
 
 import "./Modal.css"
 function Modal({ children, onClose }) {
     const handleClick = (e) => {
         e.stopPropagation()
     }
-    const handleClose = (e)=>{
+    const handleClose = (e) => {
         e.preventDefault();
         onClose()
     }
@@ -13,6 +13,7 @@ function Modal({ children, onClose }) {
         <div className="Modal" onClick={handleClick}>
             <div className="Modal-content">
                 <button onClick={handleClose} className="Close-modal">✖️</button>
+                <p className="Modal-msg"> You need to be logged in to like the gifs.</p>
                 {children}
             </div>
         </div>

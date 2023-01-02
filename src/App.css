@@ -123,6 +123,9 @@ select:focus {
 
 .error {
   color: rgb(255, 94, 94);
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 .Section-details {
