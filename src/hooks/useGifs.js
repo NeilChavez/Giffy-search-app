@@ -13,7 +13,7 @@ export function useGifs(
   const { gifs, setGifs } = useContext(GifsContext);
 
   const keywordToSearch =
-    keyword || localStorage.getItem("lastKeyword") || "Avengers";
+    keyword || localStorage.getItem("lastKeyword") || "Dragon ball";
 
   useEffect(() => {
     setLoading(true);
